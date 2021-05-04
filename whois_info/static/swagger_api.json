@@ -1,0 +1,369 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebService-FakeWhoIs-API",
+    "description": "API for WebService-FakeWhoIs",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/whois_info/": {
+      "get": {
+        "description": "Gets all items",
+        "responses": {
+          "200": {
+            "description": "Successfully received data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "0": {
+                    "value": "[{\"id\": 1, \"website\": \"https://www.stylesellers.net\", \"ipaddress\": \"52.14.128.122\", \"contacts\": [{\"id\": 102, \"surname\": \"Rodney\", \"name\": \"Wilson\", \"number\": \"+37063148655\", \"email\": \"rwilson@protonmail.com\"}, {\"id\": 104, \"surname\": \"Evelyn\", \"name\": \"Despres\", \"number\": \"+37067247967\", \"email\": \"despresee@mail.com\"}]}, {\"id\": 2, \"website\": \"https://www.newsoutlet.com\", \"ipaddress\": \"144.1.32.88\", \"contacts\": [{\"id\": 100, \"surname\": \"Nataks\", \"name\": \"Jacksonaz\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}]}, {\"id\": 3, \"website\": \"https://www.networkspecialists.net\", \"ipaddress\": \"127.0.0.1\", \"contacts\": [{\"id\": 101, \"surname\": \"Snaicker\", \"name\": \"ASDSAD\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}, {\"id\": 102, \"surname\": \"Rodney\", \"name\": \"Wilson\", \"number\": \"+37063148655\", \"email\": \"rwilson@protonmail.com\"}, {\"id\": 105, \"surname\": \"Francis\", \"name\": \"Howard\", \"number\": \"+37015448632\", \"email\": \"howard.j.francis@gmail.com\"}]}, {\"id\": 4, \"website\": \"https://www.movierentals.co.uk\", \"ipaddress\": \"11.121.13.145\", \"contacts\": [{\"id\": 100, \"surname\": \"Nataks\", \"name\": \"Jacksonaz\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}, {\"id\": 103, \"surname\": \"Luke\", \"name\": \"Briggs\", \"number\": \"+37060248419\", \"email\": \"briggsl44@gmail.com\"}]}, {\"id\": 5, \"website\": \"https://www.localservers.io\", \"ipaddress\": \"192.168.1.1\", \"contacts\": [{\"id\": 100, \"surname\": \"Nataks\", \"name\": \"Jacksonaz\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}, {\"id\": 101, \"surname\": \"Snaicker\", \"name\": \"ASDSAD\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}, {\"id\": 103, \"surname\": \"Luke\", \"name\": \"Briggs\", \"number\": \"+37060248419\", \"email\": \"briggsl44@gmail.com\"}]}, {\"id\": 9, \"website\": \"https://www.newsoutletsas.czom\", \"ipaddress\": \"144.1.32.88\", \"contacts\": [{\"id\": 100, \"surname\": \"Nataks\", \"name\": \"Jacksonaz\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}, {\"id\": 101, \"surname\": \"Snaicker\", \"name\": \"ASDSAD\", \"number\": \"+37063244674\", \"email\": \"jackson.b@gmail.com\"}]}]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "post": {
+        "description": "Adds new entry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"id\": 9,\n    \"website\": \"https://www.niceshops.czom\",\n    \"ipaddress\": \"100.1.32.88\",\n    \"contacts\": [\n        {\n            \"id\": 100,\n            \"surname\": \"Nathan\",\n            \"name\": \"Blaine\",\n            \"number\": \"+370632664674\",\n            \"email\": \"nathannn@gmail.com\"\n        },\n        {\n            \"id\": 101,\n            \"surname\": \"Seymour\",\n            \"name\": \"Sam\",\n            \"number\": \"+37063444674\",\n            \"email\": \"skinner@gmail.com\"\n        }\n    ]\n}"
+                },
+                "1": {
+                  "value": "{\n    \"id\": 9,\n    \"website\": \"https://www.niceshops.czom\",\n    \"ipaddress\": \"100.1.32.88\",\n    \"contacts\": [\n        {\n            \"id\": 100,\n            \"surname\": \"Nathan\",\n            \"name\": \"Blaine\",\n            \"number\": \"+370632664674\",\n            \"email\": \"nathannn@gmail.com\"\n        },\n        {\n            \"id\": 101,\n            \"surname\": \"Seymour\",\n            \"name\": \"Sam\",\n            \"number\": \"+37063444674\",\n            \"email\": \"skinner@gmail.com\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully added new entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"id\": 9, \"website\": \"https://www.niceshops.czom\", \"ipaddress\": \"100.1.32.88\", \"contacts\": [{\"id\": 100, \"surname\": \"Nathan\", \"name\": \"Blaine\", \"number\": \"+370632664674\", \"email\": \"nathannn@gmail.com\"}, {\"id\": 101, \"surname\": \"Seymour\", \"name\": \"Sam\", \"number\": \"+37063444674\", \"email\": \"skinner@gmail.com\"}]}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entry already exists",
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    },
+    "/whois_info/{entry_id}": {
+      "get": {
+        "description": "Gets info of specific entry",
+        "parameters": [
+          {
+            "name": "entry_id",
+            "in": "path",
+            "description": "The ID of the entry to parse.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned entry info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"id\": 1, \"website\": \"https://www.stylesellers.net\", \"ipaddress\": \"52.14.128.122\", \"contacts\": [{\"id\": 102, \"surname\": \"Rodney\", \"name\": \"Wilson\", \"number\": \"+37063148655\", \"email\": \"rwilson@protonmail.com\"}, {\"id\": 104, \"surname\": \"Evelyn\", \"name\": \"Despres\", \"number\": \"+37067247967\", \"email\": \"despresee@mail.com\"}]}"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Could not find an entry with such ID",
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "put": {
+        "description": "Updates an entry by given ID",
+        "parameters": [
+          {
+            "name": "entry_id",
+            "in": "path",
+            "description": "The ID of the entry to parse.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body_1"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"id\": 10,\n    \"website\": \"https://www.niceshops.com\",\n    \"ipaddress\": \"100.1.32.88\",\n    \"contacts\": [\n        {\n            \"id\": 100,\n            \"surname\": \"Nathan\",\n            \"name\": \"Blaine\",\n            \"number\": \"+370632664674\",\n            \"email\": \"nathannn@gmail.com\"\n        },\n        {\n            \"id\": 101,\n            \"surname\": \"Seymour\",\n            \"name\": \"Sam\",\n            \"number\": \"+37063444674\",\n            \"email\": \"skinner@gmail.com\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully updated data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"id\": 10, \"website\": \"https://www.niceshops.com\", \"ipaddress\": \"100.1.32.88\", \"contacts\": [{\"id\": 100, \"surname\": \"Nathan\", \"name\": \"Blaine\", \"number\": \"+370632664674\", \"email\": \"nathannn@gmail.com\"}, {\"id\": 101, \"surname\": \"Seymour\", \"name\": \"Sam\", \"number\": \"+37063444674\", \"email\": \"skinner@gmail.com\"}]}"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Given ID was not found",
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "delete": {
+        "description": "Deletes an entry",
+        "parameters": [
+          {
+            "name": "entry_id",
+            "in": "path",
+            "description": "The ID of the entry to parse.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfully deleted entry",
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Could not find an entry with such ID",
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "whois_info_contacts": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "surname": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "body": {
+        "type": "object",
+        "properties": {
+          "ipaddress": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/whois_info_contacts"
+            }
+          }
+        }
+      },
+      "inline_response_201": {
+        "type": "object",
+        "properties": {
+          "ipaddress": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "body_1": {
+        "type": "object",
+        "properties": {
+          "ipaddress": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/whois_info_contacts"
+            }
+          }
+        }
+      }
+    }
+  }
+}

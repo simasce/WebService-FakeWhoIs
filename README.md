@@ -5,6 +5,10 @@ Link to used container: https://github.com/augkik/contacts/
 
 Server API is written using Python 3 and Flask.
 
+# Installation
+Clone repo:
+```git clone --recursive ```
+
 # Usage
 Run container:
 ```docker-compose up```

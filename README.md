@@ -7,7 +7,7 @@ Server API is written using Python 3 and Flask.
 
 # Installation
 Clone repo:
-```git clone --recursive ```
+```git clone https://github.com/simasce/WebService-FakeWhoIs --recursive ```
 
 # Usage
 Run container:

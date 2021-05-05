@@ -13,7 +13,7 @@ def get_contacts():
 def get_contact_raw(id):
 	ret = requests.get(request_url + str(id))
 	if ret.ok:
-		return ret.json, 200
+		return ret.json(), 200
 	return ret.text, ret.status_code
 	
 def get_contact(id):
@@ -53,16 +53,4 @@ def contact_exists(id):
 	if status != 200:
 		return False
 	return True
-	
-def update_contact_entries(winfo_array):
-	contactz = {}
-	contact_list, status = get_contacts()
-	if status != 200:
-		return #failed parsing data
-	for a in contact_list:
-		cont = Contact.deserialize(a)
-		contactz[cont.id] = cont
-	for entry in winfo_array:
-		for i in range(len(entry.contacts)):
-			entry.contacts[i] = contactz[entry.contacts[i].id]
 			

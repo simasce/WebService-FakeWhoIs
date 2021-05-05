@@ -12,7 +12,7 @@ class WhoisInfo:
 			'id': self.id,
 			'website': self.website,
 			'ipaddress': self.ipaddress,
-			'contacts': [cn.serialize() for cn in self.contacts]
+			'contacts': [cn.serialize_update() for cn in self.contacts]
 		}
 		
 	@staticmethod

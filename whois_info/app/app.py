@@ -53,7 +53,6 @@ def update_info(id):
 			entry.website = wInfo.website
 			entry.ipaddress = wInfo.ipaddress
 			entry.contacts = wInfo.contacts
-			contactparser.update_contact_entries(entries)
 			json_string = json.dumps(entry.serialize())
 			return json_string, 201, {'Content-Type': 'application/json'}	
 	return 'Could not find such item!', 404
@@ -77,7 +76,6 @@ def add_info():
 			if status != 201:
 				return 'Internal error when adding contacts! ' + res, 500
 	entries.append(wInfo)
-	contactparser.update_contact_entries(entries)
 	json_string = json.dumps(wInfo.serialize())
 	return json_string, 201, {'Content-Type': 'application/json'}
 	

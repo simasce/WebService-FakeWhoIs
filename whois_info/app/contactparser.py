@@ -1,5 +1,4 @@
 from contact import Contact
-from whois_info import WhoisInfo
 import requests
 
 request_url = "http://contacts:5000/contacts/"
@@ -11,7 +10,7 @@ def get_contacts():
 	return ret.text, ret.status_code
 	
 def get_contact_raw(id):
-	ret = requests.get(request_url + str(id))
+	ret = requests.get(request_url + str(id), timeout=1)
 	if ret.ok:
 		return ret.json(), 200
 	return ret.text, ret.status_code

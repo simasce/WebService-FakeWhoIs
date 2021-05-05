@@ -23,13 +23,13 @@ def printd(str):
 def all_info():
 	json_string = json.dumps([ob.serialize() for ob in entries])
 	return json_string, 200, {'Content-Type': 'application/json'}
-	
+
 @app.route('/whois_info/<int:id>', methods=['GET'])
 def get_info(id):
 	for entry in entries:
 		if entry.id == id:
 			json_string = json.dumps(entry.serialize())
-			return json_string, 200, {'Content-Type': 'application/json'}		
+			return json_string, 200, {'Content-Type': 'application/json'}				
 	return 'Could not find such item!', 404
 	
 @app.route('/whois_info/<int:id>', methods=['PUT'])
@@ -54,7 +54,7 @@ def update_info(id):
 			entry.ipaddress = wInfo.ipaddress
 			entry.contacts = wInfo.contacts
 			json_string = json.dumps(entry.serialize())
-			return json_string, 201, {'Content-Type': 'application/json'}	
+			return json_string, 201, {'Content-Type': 'application/json'}				
 	return 'Could not find such item!', 404
 	
 @app.route('/whois_info/', methods=['POST'])
@@ -75,16 +75,16 @@ def add_info():
 			res, status = contactparser.add_contact(contact)
 			if status != 201:
 				return 'Internal error when adding contacts! ' + res, 500
-	entries.append(wInfo)
+	entries.append(wInfo)	
 	json_string = json.dumps(wInfo.serialize())
 	return json_string, 201, {'Content-Type': 'application/json'}
+	
 	
 @app.route('/whois_info/<int:id>', methods=['DELETE'])
 def delete_info(id):
 	for entry in entries:
 		if entry.id == id:
 			entries.remove(entry)
-			json_string = json.dumps(entry.serialize())
 			return 'Item deleted!', 200	
 	return 'Item not found!', 404
 	

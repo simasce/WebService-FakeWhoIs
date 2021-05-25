@@ -1,0 +1,2 @@
+class EntryContainer:
+	entries = []

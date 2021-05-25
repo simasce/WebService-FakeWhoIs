@@ -9,4 +9,6 @@ COPY /static /app/static/
 
 RUN pip install -r requirements.txt
 
+WORKDIR /devapp
+
 CMD ["python3","-u","app.py"]

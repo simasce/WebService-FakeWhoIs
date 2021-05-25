@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:plink="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+	xmlns:wsdlsoap11="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdlsoap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap11enc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:soap11env="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:soap12env="http://www.w3.org/2003/05/soap-envelope"
+	xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+	xmlns:xop="http://www.w3.org/2004/08/xop/include"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:tns="whoisinfo.service"
+	xmlns:s0="contact"
+	xmlns:s1="whois_info" targetNamespace="whoisinfo.service" name="Application">
+	<wsdl:types>
+		<xs:schema targetNamespace="whoisinfo.service" elementFormDefault="qualified">
+			<xs:import namespace="whois_info"/>
+			<xs:complexType name="list_whois_info"/>
+			<xs:complexType name="add_whois_info">
+				<xs:sequence>
+					<xs:element name="wInfo" type="s1:WhoisInfo" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="add_whois_infoResponse">
+				<xs:sequence>
+					<xs:element name="add_whois_infoResult" type="s1:WhoisInfo" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="delete_whois_info">
+				<xs:sequence>
+					<xs:element name="id" type="xs:integer" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="delete_whois_infoResponse">
+				<xs:sequence>
+					<xs:element name="delete_whois_infoResult" type="xs:string" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="get_whois_info">
+				<xs:sequence>
+					<xs:element name="id" type="xs:integer" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="get_whois_infoResponse">
+				<xs:sequence>
+					<xs:element name="get_whois_infoResult" type="s1:WhoisInfo" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="update_whois_info">
+				<xs:sequence>
+					<xs:element name="id" type="xs:integer" minOccurs="0" nillable="true"/>
+					<xs:element name="wInfo" type="s1:WhoisInfo" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="update_whois_infoResponse">
+				<xs:sequence>
+					<xs:element name="update_whois_infoResult" type="s1:WhoisInfo" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="list_whois_infoResponse">
+				<xs:sequence>
+					<xs:element name="list_whois_infoResult" type="s1:WhoisInfoArray" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="list_whois_info" type="tns:list_whois_info"/>
+			<xs:element name="add_whois_info" type="tns:add_whois_info"/>
+			<xs:element name="add_whois_infoResponse" type="tns:add_whois_infoResponse"/>
+			<xs:element name="delete_whois_info" type="tns:delete_whois_info"/>
+			<xs:element name="delete_whois_infoResponse" type="tns:delete_whois_infoResponse"/>
+			<xs:element name="get_whois_info" type="tns:get_whois_info"/>
+			<xs:element name="get_whois_infoResponse" type="tns:get_whois_infoResponse"/>
+			<xs:element name="update_whois_info" type="tns:update_whois_info"/>
+			<xs:element name="update_whois_infoResponse" type="tns:update_whois_infoResponse"/>
+			<xs:element name="list_whois_infoResponse" type="tns:list_whois_infoResponse"/>
+		</xs:schema>
+		<xs:schema targetNamespace="contact" elementFormDefault="qualified">
+			<xs:complexType name="Contact">
+				<xs:sequence>
+					<xs:element name="id" type="xs:integer" minOccurs="0" nillable="true"/>
+					<xs:element name="surname" type="xs:string" minOccurs="0" nillable="true"/>
+					<xs:element name="name" type="xs:string" minOccurs="0" nillable="true"/>
+					<xs:element name="number" type="xs:string" minOccurs="0" nillable="true"/>
+					<xs:element name="email" type="xs:string" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ContactArray">
+				<xs:sequence>
+					<xs:element name="Contact" type="s0:Contact" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Contact" type="s0:Contact"/>
+			<xs:element name="ContactArray" type="s0:ContactArray"/>
+		</xs:schema>
+		<xs:schema targetNamespace="whois_info" elementFormDefault="qualified">
+			<xs:import namespace="contact"/>
+			<xs:complexType name="WhoisInfo">
+				<xs:sequence>
+					<xs:element name="id" type="xs:integer" minOccurs="0" nillable="true"/>
+					<xs:element name="website" type="xs:string" minOccurs="0" nillable="true"/>
+					<xs:element name="ipaddress" type="xs:string" minOccurs="0" nillable="true"/>
+					<xs:element name="contacts" type="s0:ContactArray" minOccurs="0" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="WhoisInfoArray">
+				<xs:sequence>
+					<xs:element name="WhoisInfo" type="s1:WhoisInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WhoisInfo" type="s1:WhoisInfo"/>
+			<xs:element name="WhoisInfoArray" type="s1:WhoisInfoArray"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="list_whois_info">
+		<wsdl:part name="list_whois_info" element="tns:list_whois_info"/>
+	</wsdl:message>
+	<wsdl:message name="list_whois_infoResponse">
+		<wsdl:part name="list_whois_infoResponse" element="tns:list_whois_infoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="get_whois_info">
+		<wsdl:part name="get_whois_info" element="tns:get_whois_info"/>
+	</wsdl:message>
+	<wsdl:message name="get_whois_infoResponse">
+		<wsdl:part name="get_whois_infoResponse" element="tns:get_whois_infoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="delete_whois_info">
+		<wsdl:part name="delete_whois_info" element="tns:delete_whois_info"/>
+	</wsdl:message>
+	<wsdl:message name="delete_whois_infoResponse">
+		<wsdl:part name="delete_whois_infoResponse" element="tns:delete_whois_infoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="update_whois_info">
+		<wsdl:part name="update_whois_info" element="tns:update_whois_info"/>
+	</wsdl:message>
+	<wsdl:message name="update_whois_infoResponse">
+		<wsdl:part name="update_whois_infoResponse" element="tns:update_whois_infoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="add_whois_info">
+		<wsdl:part name="add_whois_info" element="tns:add_whois_info"/>
+	</wsdl:message>
+	<wsdl:message name="add_whois_infoResponse">
+		<wsdl:part name="add_whois_infoResponse" element="tns:add_whois_infoResponse"/>
+	</wsdl:message>
+	<wsdl:service name="WhoisServiceSOAP">
+		<wsdl:port name="Application" binding="tns:Application">
+			<wsdlsoap11:address location="http://localhost:5000/soap/"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsdl:portType name="Application">
+		<wsdl:operation name="list_whois_info" parameterOrder="list_whois_info">
+			<wsdl:input name="list_whois_info" message="tns:list_whois_info"/>
+			<wsdl:output name="list_whois_infoResponse" message="tns:list_whois_infoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="get_whois_info" parameterOrder="get_whois_info">
+			<wsdl:input name="get_whois_info" message="tns:get_whois_info"/>
+			<wsdl:output name="get_whois_infoResponse" message="tns:get_whois_infoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="delete_whois_info" parameterOrder="delete_whois_info">
+			<wsdl:input name="delete_whois_info" message="tns:delete_whois_info"/>
+			<wsdl:output name="delete_whois_infoResponse" message="tns:delete_whois_infoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="update_whois_info" parameterOrder="update_whois_info">
+			<wsdl:input name="update_whois_info" message="tns:update_whois_info"/>
+			<wsdl:output name="update_whois_infoResponse" message="tns:update_whois_infoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="add_whois_info" parameterOrder="add_whois_info">
+			<wsdl:input name="add_whois_info" message="tns:add_whois_info"/>
+			<wsdl:output name="add_whois_infoResponse" message="tns:add_whois_infoResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="Application" type="tns:Application">
+		<wsdlsoap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="list_whois_info">
+			<wsdlsoap11:operation soapAction="list_whois_info" style="document"/>
+			<wsdl:input name="list_whois_info">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="list_whois_infoResponse">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="get_whois_info">
+			<wsdlsoap11:operation soapAction="get_whois_info" style="document"/>
+			<wsdl:input name="get_whois_info">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="get_whois_infoResponse">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="delete_whois_info">
+			<wsdlsoap11:operation soapAction="delete_whois_info" style="document"/>
+			<wsdl:input name="delete_whois_info">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="delete_whois_infoResponse">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="update_whois_info">
+			<wsdlsoap11:operation soapAction="update_whois_info" style="document"/>
+			<wsdl:input name="update_whois_info">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="update_whois_infoResponse">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="add_whois_info">
+			<wsdlsoap11:operation soapAction="add_whois_info" style="document"/>
+			<wsdl:input name="add_whois_info">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="add_whois_infoResponse">
+				<wsdlsoap11:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<script/>
+</wsdl:definitions>

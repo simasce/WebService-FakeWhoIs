@@ -1,10 +1,14 @@
-class Contact:
-	def __init__(self, id, surname, name, number, email):
-		self.id = id
-		self.surname = surname
-		self.name = name
-		self.number = number
-		self.email = email		
+from spyne.model.complex import ComplexModel
+from spyne import Integer, Unicode
+
+class Contact(ComplexModel):
+	_type_info = [
+		('id', Integer),
+		('surname', Unicode),
+		('name', Unicode),
+		('number', Unicode),
+		('email', Unicode),
+	]
 		
 	def serialize(self):
 		return {
@@ -16,5 +20,15 @@ class Contact:
 		}
 		
 	@staticmethod
+	def create(id, surname, name, number, email):
+		ret = Contact()
+		ret.id = id
+		ret.surname = surname
+		ret.name = name
+		ret.number = number
+		ret.email = email		
+		return ret
+		
+	@staticmethod
 	def deserialize(dict):
-		return Contact(dict['id'], dict['surname'], dict['name'], dict['number'], dict['email'])
+		return Contact.create(dict['id'], dict['surname'], dict['name'], dict['number'], dict['email'])

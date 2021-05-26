@@ -15,9 +15,9 @@ Run container: ```docker-compose up```
   
 The API can be found at ```localhost:5000/whois_info/```
 
-The SOAP API can be found at ```localhost:5000/soap/?wsdl```
+The SOAP API can be found at ```localhost:5000/soap/```
 
-The WSDL definition can be found at ```localhost:5000/soap?```
+The WSDL definition can be found at ```localhost:5000/?wsdl```
 
 The Swagger UI can be found at ```localhost:5000/swagger```
 
